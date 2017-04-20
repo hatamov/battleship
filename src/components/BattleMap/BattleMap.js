@@ -1,26 +1,41 @@
-import './styles.less'
+import './styles.less';
 
-import React, { Component, PropTypes } from 'react';
-import MapCell from './MapCell'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import MapCell from './MapCell';
 
 export default class BattleMap extends Component {
 
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.props.onCellClick(
+      +e.target.getAttribute('data-row'),
+      +e.target.getAttribute('data-col')
+    );
+  }
+
   render() {
-    const size = `${(100/this.props.matrix.length).toFixed(2)}%`;
+    const size = `${(100 / this.props.matrix.length).toFixed(2)}%`;
 
     const mapRows = this.props.matrix.map((matrixRow, rowIndex) => (
       <div
         className="row"
         key={rowIndex}
-        style={{height: size}}
+        style={{ height: size }}
+        onClick={ this.handleClick }
       >
         {
-          matrixRow.map((cellStatus, collIndex) => (
+          matrixRow.map((cellStatus, colIndex) => (
             <MapCell
-              key={collIndex}
+              key={colIndex}
               status={cellStatus}
-              style={{width: size}}
-              onClick={ () => this.props.onCellClick(rowIndex, collIndex) }
+              style={{ width: size }}
+              data-row={rowIndex}
+              data-col={colIndex}
             />
           ))
         }
@@ -30,3 +45,8 @@ export default class BattleMap extends Component {
     return <div className="battle-map"> { mapRows } </div>;
   }
 }
+
+BattleMap.propTypes = {
+  matrix: PropTypes.array.isRequired,
+  onCellClick: PropTypes.func.isRequired,
+};

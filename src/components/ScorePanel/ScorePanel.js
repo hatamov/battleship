@@ -1,6 +1,7 @@
-import './styles.less'
+import './styles.less';
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 export default class ScorePanel extends Component {
@@ -8,7 +9,7 @@ export default class ScorePanel extends Component {
   render() {
 
     const { text, score } = this.props;
-    let scoreTxt = score <10 ? `0${score}`: `${score}`;
+    let scoreTxt = score < 10 ? `0${score}` : `${score}`;
 
 
     return (
@@ -21,7 +22,7 @@ export default class ScorePanel extends Component {
   }
 }
 
-// ScorePanel.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   score: PropTypes.number.isRequired,
-// };
+ScorePanel.propTypes = {
+  text: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+};

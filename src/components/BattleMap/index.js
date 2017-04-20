@@ -1,3 +1,3 @@
-import BattleMap from './BattleMap'
+import BattleMap from './BattleMap';
 
 export default BattleMap;

@@ -1,3 +1,3 @@
-import ShipPanel from './ShipPanel'
+import ShipPanel from './ShipPanel';
 
 export default ShipPanel;

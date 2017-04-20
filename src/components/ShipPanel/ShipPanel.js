@@ -1,7 +1,8 @@
-import './styles.less'
+import './styles.less';
 
-import React, { Component, PropTypes } from 'react'
-import HitsBar from './HitsBar'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import HitsBar from './HitsBar';
 
 const ShipPanel = (props) => (
   <div className="ship-panel">
@@ -13,4 +14,8 @@ const ShipPanel = (props) => (
   </div>
 );
 
-export default ShipPanel
+ShipPanel.propTypes = {
+  size: PropTypes.number.isRequired,
+}
+
+export default ShipPanel;
