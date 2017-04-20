@@ -1,0 +1,77 @@
+.ship-panel {
+  width: 100%;
+  height: 60px;
+  position: relative;
+
+  .ship {
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 100%;
+    background-size: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (min-width: 1000px) {
+      width: 120px;
+      background-size: 100px;
+    }
+
+    &.ship-type-carrier {
+      background-image: url('/img/carrier_shape.png');
+    }
+    &.ship-type-battleship {
+      background-image: url('/img/battleship_shape.png');
+    }
+    &.ship-type-cruiser {
+      background-image: url('/img/cruiser_shape.png');
+    }
+    &.ship-type-submarine {
+      background-image: url('/img/submarine_shape.png');
+    }
+    &.ship-type-destroyer {
+      background-image: url('/img/destroyer_shape.png');
+    }
+
+  }
+
+  .hits-bar {
+    width: 120px;
+
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 0;
+    bottom: 0;
+
+    @media (min-width: 1000px) {
+      left: 120px;
+    }
+    //border: 1px solid black;
+
+    .item {
+      display: inline-block;
+      height: 100%;
+      width: 20px;
+      //border: 1px solid red;
+      background-image: url('/img/miss_small.png');
+      //background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 14px;
+
+      @media (min-width: 1000px) {
+        background-size: 20px;
+      }
+
+      &.status-hit {
+        background-image: url('/img/hit_small.png');
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.battleship-game {
+  position: relative;
+
+  width: 320px;
+
+  @media (min-width: 1000px) {
+    width: 800px;
+  }
+
+  .info-block {
+    @media (min-width: 1000px) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 250px;
+    }
+    border: 1px solid red;
+  }
+
+  .battle-map-container {
+    padding: 5px;
+    z-index: 1;
+    background-color: #ffb600;
+    width: 310px;
+    height: 310px;
+    @media (min-width: 1000px) {
+      width: 400px;
+      height: 400px;
+      margin-left: 250px;
+    }
+  }
+
+  .players-score-container .player1 {
+    background-color: #ffb600;
+  }
+
+}
