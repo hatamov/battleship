@@ -46,17 +46,17 @@ export default class InfoBlock extends Component {
     ));
 
     let shipsEl = ships;
-    if (isCompact) {
-      shipsEl = (
-        <table style={{ width: '100%' }}>
-          <tbody>
-            <tr><td>{ships[0]}</td><td>{ships[3]}</td></tr>
-            <tr><td>{ships[1]}</td><td>{ships[4]}</td></tr>
-            <tr><td>{ships[2]}</td></tr>
-          </tbody>
-        </table>
-      );
-    }
+    // if (isCompact) {
+    //   shipsEl = (
+    //     <table style={{ width: '100%' }}>
+    //       <tbody>
+    //         <tr><td>{ships[0]}</td><td>{ships[3]}</td></tr>
+    //         <tr><td>{ships[1]}</td><td>{ships[4]}</td></tr>
+    //         <tr><td>{ships[2]}</td></tr>
+    //       </tbody>
+    //     </table>
+    //   );
+    // }
 
     return (
       <div className={`info-block ${isCompact ? 'compact' : ''}` } >

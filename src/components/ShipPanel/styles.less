@@ -1,25 +1,26 @@
+//@ship-sprite-ratio: 3.75;
+//@ship-height: 60px * 0.5;
+//@ship-width: @ship-height * @ship-sprite-ratio;
+//@ship-panel-width: @ship-width * 1.5;
+//@hits-bar-item-width: (@ship-panel-width - @ship-width) / 5;
+
+@ship-panel-height: 60px * 0.5;
+@ship-panel-width: (@ship-panel-height * 3.75) * 2;
+
+
 .ship-panel {
-  width: 100%;
-  height: 60px;
-  position: relative;
+  //display: flex;
+  border: 1px solid black;
+  width: @ship-panel-width;
+  height: @ship-panel-height;
 
   .ship {
-
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 60px;
+    display: inline-block;
+    flex-grow: 1;
+    width: 50%;
     height: 100%;
-    background-size: 50px;
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
-    @media (min-width: 1000px) {
-      width: 120px;
-      background-size: 100px;
-    }
 
     &.ship-type-carrier {
       background-image: url('/img/carrier_shape.png');
@@ -40,34 +41,21 @@
   }
 
   .hits-bar {
-    width: 120px;
-
+    width: 50%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 60px;
-    right: 0;
-    bottom: 0;
-
-    @media (min-width: 1000px) {
-      left: 120px;
-    }
-    //border: 1px solid black;
+    display: inline-block;
 
     .item {
       display: inline-block;
+      box-sizing: border-box;
       height: 100%;
-      width: 20px;
-      //border: 1px solid red;
+      width: 20%;
+      padding: 5px;
+      border: 1px solid red;
       background-image: url('/img/miss_small.png');
-      //background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 14px;
-
-      @media (min-width: 1000px) {
-        background-size: 20px;
-      }
+      background-size: 60%;
 
       &.status-hit {
         background-image: url('/img/hit_small.png');
