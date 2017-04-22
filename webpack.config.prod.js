@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -27,7 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html',
-      title: 'Simple Redux Boilerplate',
+      title: 'Battleship',
       inject: 'body'
     }),
     /**
@@ -45,7 +46,10 @@ module.exports = {
       compressor: {
         warnings: false
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+        {from: 'assets/img', to: 'img'},
+    ]),
   ],
   module: {
     loaders: [
@@ -57,6 +61,14 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
+      },
+      {
+        test: /\.less/,
+        loader: 'style!css!less'
+      },
+      // inline base64 URLs for <=8k images, direct URLs for the rest
+      { test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=8192'
       }
     ]
   }

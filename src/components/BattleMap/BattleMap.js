@@ -42,7 +42,9 @@ export default class BattleMap extends Component {
       </div>
     ));
 
-    return <div className="battle-map"> { mapRows } </div>;
+    return (
+      <div className="battle-map"> { mapRows } </div>
+    )
   }
 }
 

@@ -1,38 +1,157 @@
+@wide_aspect: ~"(min-aspect-ratio: 4/3)";
+@non_wide_aspect: ~"(max-aspect-ratio: 4/3)";
+@mobile: ~"(min-width: 200px) and (max-width: 767px)";
+@tablet: ~"(min-width: 768px) and (max-width: 1023px)";
+@desktop: ~"(min-width: 1024px)";
+@player1_color: #ffb600;
+@player2_color: #00c1a0;
+
+
 .battleship-game {
-  position: relative;
-
-  width: 320px;
-
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
+  display: flex;
+  flex-grow: 1;
+  background-color: white;
+  box-sizing: border-box;
 
   .info-block {
-    @media (min-width: 1000px) {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 250px;
+    display: flex;
+    box-sizing: border-box;
+
+    .players-score-container {
+      display: flex;
+      max-height: 15vmin;
+      .score-panel {
+        font-size: 5vmin;
+        flex-grow: 1;
+      }
     }
-    border: 1px solid red;
+    .ships-container {
+      display: flex;
+    }
   }
 
   .battle-map-container {
-    padding: 5px;
     z-index: 1;
-    background-color: #ffb600;
-    width: 310px;
-    height: 310px;
-    @media (min-width: 1000px) {
-      width: 400px;
-      height: 400px;
-      margin-left: 250px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1vmin @player1_color;
+    background-color: @player1_color;
+    min-height: 200px;
+    min-width: 200px;
+  }
+
+  .players-score-container {
+    .player1 {
+      background-color: @player1_color;
+    }
+    .player2 {
+      background-color: @player2_color;
     }
   }
+}
 
-  .players-score-container .player1 {
-    background-color: #ffb600;
+@media @desktop {
+
+  .battleship-game {
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    margin: 0 2% 0 2%;
+
+    .info-block {
+      flex-grow: 1;
+      flex-flow: column nowrap;
+      margin-right: 20px;
+      max-width: 40vmax;
+
+      .players-score-container {
+        flex-grow: 2;
+      }
+
+      .ships-container {
+        flex-flow: column nowrap;
+        flex-grow: 10;
+        justify-content: space-around;
+
+        .ship-panel {
+          width: 100%;
+        }
+      }
+    }
+
+    .battle-map-container {
+      width: 65vmin;
+      height: 65vmin;
+      @media @wide_aspect {
+        width: 90vmin;
+        height: 90vmin;
+      }
+    }
+  }
+}
+
+@media @mobile, @tablet {
+
+  .main-app-container {
+    height: auto;
   }
 
+  .battleship-game {
+    padding-top: 1vh;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .info-block {
+      width: 100%;
+      align-items: center;
+      padding: 10px;
+      flex-grow: 1;
+
+      @media @mobile{
+        flex-flow: column nowrap;
+      }
+      @media @tablet {
+        flex-flow: row nowrap;
+        height: 25vh;
+      }
+
+      .players-score-container {
+        .score-panel{
+          font-size: 4vmin;
+          padding: 1vmin;
+        }
+        @media @mobile {
+          width: 100%;
+        }
+        @media @tablet {
+          height: 70%;
+        }
+      }
+
+      .ships-container {
+        align-self: stretch;
+        flex-flow: row wrap;
+        flex-grow: 7;
+        justify-content: flex-start;
+
+        .ship-panel {
+          width: 45%;
+          margin: 5px;
+          @media @tablet {
+            width: 40vmin;
+            max-width: 45%;
+          }
+        }
+      }
+    }
+
+    .battle-map-container {
+      @media @mobile {
+        width: 98vmin;
+        height: 98vmin;
+      }
+      @media @tablet {
+        width: 75vmin;
+        height: 75vmin;
+      }
+    }
+  }
 }
